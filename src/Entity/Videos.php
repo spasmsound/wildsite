@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,4 +38,11 @@ class Videos
 
         return $this;
     }
+
+    public function getVideoId()
+    {
+        $link = explode('=', $this->link);
+        return array_pop($link);
+    }
+
 }

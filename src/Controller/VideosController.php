@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Helper\VideoHelper;
+use App\Entity\Videos;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,8 +15,8 @@ class VideosController extends AbstractController
      */
     public function show(EntityManagerInterface $em)
     {
-        $helper = new VideoHelper($em);
-        $videos = $helper->getHtmlLinks();
+        $repository = $em->getRepository(Videos::class);
+        $videos = $repository->findAll();
 
         return $this->render('videos.html.twig',
             [

@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ArticleController extends AbstractController
 {
+
     /**
      * @Route("/", name="app_homepage")
      */
