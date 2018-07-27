@@ -11,9 +11,9 @@ class VideosController extends AbstractController
 {
 
     /**
-     * @Route("/videos/", name="videos_page")
+     * @Route("/videos/", name="app_videos_page")
      */
-    public function show(EntityManagerInterface $em)
+    public function index(EntityManagerInterface $em)
     {
         $repository = $em->getRepository(Videos::class);
         $videos = $repository->findAll();
