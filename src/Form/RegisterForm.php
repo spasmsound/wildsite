@@ -11,18 +11,13 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class RegisterForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class, [
-                'label' => 'Почта'
-            ])
-            ->add('username', TextType::class,
-                [
-                    'label' => 'Имя пользователя'
-                ])
+            ->add('email', EmailType::class)
+            ->add('username', TextType::class)
             ->add('plainPassword', RepeatedType::class,
                 [
                     'type' => PasswordType::class,

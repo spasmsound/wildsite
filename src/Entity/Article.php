@@ -26,11 +26,6 @@ class Article
      */
     private $content;
 
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
-    private $author;
-
     public function getId()
     {
         return $this->id;
@@ -60,15 +55,4 @@ class Article
         return $this;
     }
 
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(?string $author): self
-    {
-        $this->author = $author;
-
-        return $this;
-    }
 }

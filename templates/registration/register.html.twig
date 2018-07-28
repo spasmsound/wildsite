@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form_start(form) }}
-    {{ form_row(form.username) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.plainPassword.first) }}
-    {{ form_row(form.plainPassword.second) }}
+    <div class="contact_form">
+        {{ form_start(form) }}
+        {{ form_row(form.username, {'label': 'Имя пользователя'}) }}
+        {{ form_row(form.email, {'label': 'Почта'}) }}
+        {{ form_row(form.plainPassword.first, {'label': 'Пароль'}) }}
+        {{ form_row(form.plainPassword.second, {'label': 'Повторите пароль'}) }}
 
-    <button type="submit" class="btn btn-success">Зарегистрироваться</button>
-    {{ form_end(form) }}
+        <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}

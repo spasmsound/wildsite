@@ -18,6 +18,18 @@ html {height:100%}
     right: 0;
 }
 
+.margin-home {
+    margin-left: 18%;
+}
+
+.margin-login {
+    margin-left: 39%;
+}
+
+.margin-login h1 {
+    margin-left: 29%;
+}
+
 .space-brand {
     color: #fff;
     font-weight: bold;
@@ -96,6 +108,10 @@ html {height:100%}
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     background: #fff;
+}
+
+.article-container a {
+    display: block
 }
 
 .article-container:hover {
