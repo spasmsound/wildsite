@@ -18,27 +18,28 @@ class ArticleController extends AbstractController
         $repository = $em->getRepository(Article::class);
         $articles = $repository->findAll();
 
-        return $this->render('homepage.html.twig',
+        return $this->render(
+            'homepage.html.twig',
             [
-                'articles' => $articles
-            ]);
+                'articles' => $articles,
+            ]
+        );
     }
 
     /**
-     * @Route("/news/{id}", name="article_show")
+     * @Route("/news/{article}", name="article_show")
+     * @param Article $article
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function show($id, EntityManagerInterface $em)
+    public function show(Article $article)
     {
-
-        $repository = $em->getRepository(Article::class);
-        $article = $repository->findOneBy(['id' => $id]);
-        if(!$article) {
-            throw $this->createNotFoundException('Нет новости по ' . $id);
-        }
-        return $this->render('article.html.twig',
+        return $this->render(
+            'article.html.twig',
             [
-                'article' => $article
-            ]);
+                'article' => $article,
+            ]
+        );
     }
 
 }

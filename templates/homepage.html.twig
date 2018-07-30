@@ -17,7 +17,7 @@
                     <!-- Supporting Articles -->
                     {% for article in articles %}
                         <div class="article-container my-1">
-                            <a href="{{ path('article_show', {id: article.id}) }}">
+                            <a href="{{ url('article_show', {article: article.id}) }}">
                                 <img class="article-img" src="{{ asset('images/Article.jpg') }}">
                                 <div class="article-title d-inline-block pl-3 align-middle">
                                     <span><b>{{ article.title }}</b></span>

@@ -1,0 +1,11 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{%- block form_widget_simple -%}
+    {% set attr = attr|default({})|merge({class: 'some-class '~attr['class']|default('')}) %}
+    {{ parent() }}
+{%- endblock form_widget_simple -%}
+
+{%- block email_widget -%}
+    {% set attr = attr|default({})|merge({class: 'email-class '~attr['class']|default('')}) %}
+    {{ parent() }}
+{%- endblock email_widget -%}

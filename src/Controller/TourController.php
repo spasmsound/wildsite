@@ -15,14 +15,15 @@ class TourController extends AbstractController
      */
     public function index(EntityManagerInterface $em)
     {
-
         $repository = $em->getRepository(Tour::class);
-        $articles = $repository->findAll();
+        $tours = $repository->findAll();
 
-        return $this->render('tour.html.twig',
+        return $this->render(
+            'tour.html.twig',
             [
-                'articles' => $articles
-            ]);
+                'tours' => $tours,
+            ]
+        );
 
     }
 }

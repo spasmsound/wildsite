@@ -27,12 +27,15 @@ class RegistrationController extends Controller
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+
             return $this->redirectToRoute('app_homepage');
         }
 
-        return $this->render('registration/register.html.twig',
+        return $this->render(
+            'registration/register.html.twig',
             [
-                'form' => $form->createView()
-            ]);
+                'form' => $form->createView(),
+            ]
+        );
     }
 }

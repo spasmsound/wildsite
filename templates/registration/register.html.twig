@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
+{% form_theme form.plainPassword 'special_theme.html.twig' %}
 
 {% block body %}
     <div class="contact_form">
         {{ form_start(form) }}
-        {{ form_row(form.username, {'label': 'Имя пользователя'}) }}
+
+        {{ form_row(form.username, {'label': 'Имя пользователя', 'attr': {'class': 'foo-class'}}) }}
         {{ form_row(form.email, {'label': 'Почта'}) }}
         {{ form_row(form.plainPassword.first, {'label': 'Пароль'}) }}
         {{ form_row(form.plainPassword.second, {'label': 'Повторите пароль'}) }}

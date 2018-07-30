@@ -44,6 +44,11 @@ class User implements UserInterface, \Serializable
      */
     private $isActive;
 
+    /**
+     * @ORM\Column(name="is_admin", type="boolean")
+     */
+    private $isAdmin = false;
+
     public function getId()
     {
         return $this->id;
@@ -112,14 +117,36 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getisAdmin()
+    {
+        return $this->isAdmin;
+    }
+
+    /**
+     * @param mixed $isAdmin
+     *
+     * @return $this
+     */
+    public function setIsAdmin($isAdmin)
+    {
+        $this->isAdmin = $isAdmin;
+
+        return $this;
+    }
+
     /** @see \Serializable::serialize() */
     public function serialize()
     {
-        return serialize( [
-            $this->id,
-            $this->username,
-            $this->password
-        ]);
+        return serialize(
+            [
+                $this->id,
+                $this->username,
+                $this->password,
+            ]
+        );
     }
 
 
@@ -135,7 +162,13 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        $roles = ['ROLE_USER'];
+
+        if ($this->isAdmin) {
+            $roles[] = 'ROLE_ADMIN';
+        }
+
+        return $roles;
     }
 
 
@@ -144,5 +177,7 @@ class User implements UserInterface, \Serializable
         return null;
     }
 
-    public function eraseCredentials() {}
+    public function eraseCredentials()
+    {
+    }
 }

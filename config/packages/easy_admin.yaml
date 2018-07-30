@@ -4,3 +4,4 @@ easy_admin:
         - App\Entity\Article
         - App\Entity\Tour
         - App\Entity\Videos
+        - App\Entity\User

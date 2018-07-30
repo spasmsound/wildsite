@@ -1,0 +1,6 @@
+{% extends 'theme.html.twig' %}
+
+{%- block form_widget_simple -%}
+    {% set attr = attr|default({})|merge({class: 'special-class '~attr['class']|default('')}) %}
+    {{ parent() }}
+{%- endblock form_widget_simple -%}
