@@ -23,16 +23,18 @@ class RegisterForm extends AbstractType
                     'type' => PasswordType::class,
                     'first_options' => ['label' => 'Пароль'],
                     'second_options' => ['label' => 'Повторите пароль']
-                ])
+                ]
+            )
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
-        [
+            [
             'data_class' => User::class
-        ]);
+            ]
+        );
     }
 
 }

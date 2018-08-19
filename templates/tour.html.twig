@@ -14,19 +14,19 @@
                         </div>
                     </a>
                     <!-- Supporting Articles -->
-                    {% for article in articles %}
+                    {% for tour in tours %}
                         <div class="article-container my-1">
                             <a href="https://wildwaystour.com">
                                 <div class="article-title d-inline-block pl-3 align-middle">
-                                    <div><i>{{ article.city }}</i></div>
+                                    <div><i>{{ tour.city }}</i></div>
                                     <br>
                                 </div>
                                 <div class="article-title d-inline-block pl-3 align-middle">
-                                    <div><b>Клуб: {{ article.club }}</b></div>
+                                    <div><b>Клуб: {{ tour.club }}</b></div>
                                     <br>
                                 </div>
                                 <div class="article-title d-inline-block pl-3 align-middle">
-                                    <div>Дата: {{ article.date|date('d.m///H:i') }}</div>
+                                    <div>Дата: {{ tour.date|date('d.m///H:i') }}</div>
                                     <br>
                                 </div>
                             </a>
