@@ -21,8 +21,8 @@ class RegisterForm extends AbstractType
             ->add('plainPassword', RepeatedType::class,
                 [
                     'type' => PasswordType::class,
-                    'first_options' => ['label' => 'Пароль'],
-                    'second_options' => ['label' => 'Повторите пароль']
+                    'first_options' => ['label' => 'Password'],
+                    'second_options' => ['label' => 'Repeat Password']
                 ]
             )
         ;

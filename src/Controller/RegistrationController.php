@@ -19,6 +19,7 @@ class RegistrationController extends Controller
     /**
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param EntityManagerInterface $em
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @Route("/register", name="register")
      */

@@ -6,6 +6,7 @@ use App\Entity\Article;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -14,16 +15,29 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ArticleController extends AbstractController
 {
-
     /**
      * @param EntityManagerInterface $em
+     * @param int $page
+     * @param PaginatorInterface $paginator
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/", name="app_homepage")
+     * @Route(
+     *     "/{page}",
+     *     name="app_homepage",
+     *     methods="GET",
+     *     defaults={"page": 1},
+     *     requirements={"page" = "\d+"})
      */
-    public function homepage(EntityManagerInterface $em)
-    {
-        $repository = $em->getRepository(Article::class);
-        $articles = $repository->findAll();
+    public function homepage(
+        EntityManagerInterface $em,
+        int $page,
+        PaginatorInterface $paginator
+    ) : Response {
+        $articles = $paginator->paginate(
+            $em->getRepository(Article::class)->findAll(),
+            $page,
+            $this->getParameter('max_articles_on_page')
+        );
+
 
         return $this->render('homepage.html.twig',
             [
@@ -32,19 +46,12 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @param $id
-     * @param EntityManagerInterface $em
+     * @param Article $article
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/news/{id}", name="article_show")
+     * @Route("/news/{article}", name="article_show")
      */
-    public function show($id, EntityManagerInterface $em)
+    public function show(Article $article)
     {
-
-        $repository = $em->getRepository(Article::class);
-        $article = $repository->findOneBy(['id' => $id]);
-        if(!$article) {
-            throw $this->createNotFoundException('Нет новости по ' . $id);
-        }
         return $this->render('article.html.twig',
             [
                 'article' => $article
